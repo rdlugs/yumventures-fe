@@ -1,0 +1,11 @@
+.custom-calendar {
+    @apply text-sm text-gray-800 bg-white rounded-lg dark:bg-neutral-900;
+  }
+  
+  .react-datepicker__day--selected {
+    @apply bg-blue-600 text-white rounded-full;
+  }
+  
+  .react-datepicker__day:hover {
+    @apply bg-gray-100 dark:bg-neutral-800;
+  }
