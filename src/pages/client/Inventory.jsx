@@ -15,6 +15,10 @@ import {
 } from "lucide-react";
 import useDialogStore from "../../store/useDialogStore";
 import DialogComponent from "../../components/DialogComponent";
+import InventoryStatus from "../../components/client/InventoryStatus";
+
+
+
 const Inventory = () => {
   const navigate = useNavigate();
   const { openDialog, closeDialog } = useDialogStore();
@@ -134,7 +138,6 @@ const Inventory = () => {
   });
 
   return (
-    <>
       <ClientLayout>
         <div className="flex flex-col h-screen px-4 py-4">
           <div className="-m-1.5 overflow-x-auto">
@@ -573,19 +576,7 @@ const Inventory = () => {
 
                           <td className="size-px whitespace-nowrap ">
                             <a className="block p-6" href="#">
-                              <span className="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-teal-100 text-teal-800 rounded-full dark:bg-teal-500/10 dark:text-teal-500">
-                                <svg
-                                  className="size-2.5"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="16"
-                                  height="16"
-                                  fill="currentColor"
-                                  viewBox="0 0 16 16"
-                                >
-                                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                                </svg>
-                                On Stock
-                              </span>
+                              <InventoryStatus name={item.inventory_name} description={item.inventory_status} />
                             </a>
                           </td>
                           <td className="size-px whitespace-nowrap">
@@ -728,7 +719,6 @@ const Inventory = () => {
           </div>
         </div>
       </ClientLayout>
-    </>
   );
 };
 
