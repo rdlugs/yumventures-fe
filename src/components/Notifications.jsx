@@ -2,6 +2,8 @@ import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { Bell } from "lucide-react"; // Using lucide for bell icon
 
 export default function Notifications() {
+
+
   return (
     <div className="relative inline-block">
       <Popover>
