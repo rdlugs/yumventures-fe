@@ -1,8 +1,28 @@
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { Bell } from "lucide-react"; // Using lucide for bell icon
+import { useEffect, useState } from "react";
+import { io } from 'socket.io-client';
+
+const socket = io("http://localhost:5000", {
+  transports: ["websocket"],
+  withCredentials: true
+});
 
 export default function Notifications() {
 
+  const [notification, setNotification] = useState('');
+
+  useEffect(() => {
+    // Listen for the 'notification' event from the backend
+    socket.on('notification', (data) => {
+      console.log(data)
+      setNotification(data.message);
+    });
+
+    return () => {
+      socket.off('notification');
+    };
+  }, []);
 
   return (
     <div className="relative inline-block">

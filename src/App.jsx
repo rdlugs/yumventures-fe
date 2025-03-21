@@ -20,34 +20,10 @@ import CustomerHistory from "./pages/customer/History";
 import CustomerSettings from "./pages/customer/Settings";
 import Customertocustomer from "./pages/customer/c2c";
 
-import { io } from 'socket.io-client';
-
-import { useEffect, useState } from "react";
-const socket = io("http://localhost:5000", {
-  transports: ["websocket"],
-  withCredentials: true
-});
-
-
 const App = () => {
-
-  const [notification, setNotification] = useState('');
-
-  useEffect(() => {
-    // Listen for the 'notification' event from the backend
-    socket.on('notification', (data) => {
-      console.log(data)
-      setNotification(data.message);
-    });
-
-    return () => {
-      socket.off('notification');
-    };
-  }, []);
 
   return (
     <Router>
-      {notification && <div className="notification">{notification}</div>}
       <Routes>
         <Route exact path="/superadmin/login" element={<LoginPage />} />
         <Route
