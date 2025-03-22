@@ -564,7 +564,10 @@ const Inventory = () => {
                             <a className="block p-6" href="#">
                               <div className="flex items-center gap-x-3">
                                 <div className="grow">
-                                  <span className="block text-sm font-semibold text-gray-800 dark:text-neutral-200">
+                                  <span 
+                                    className={`block text-sm font-semibold dark:text-neutral-200 ${item.is_expired ? 'text-red-500 bg-red-100 px-2 rounded-full' : 'text-gray-800'}`}
+                                    title={`${item.is_expired ? 'Expired Item' : ''}`}
+                                    >
                                     {new Date(
                                       item.expiration_date
                                     ).toLocaleDateString()}

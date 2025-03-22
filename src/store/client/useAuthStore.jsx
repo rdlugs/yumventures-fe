@@ -6,7 +6,7 @@ const useAuthStore = create((set) => ({
   isAuthenticated: false,
   user: null,
   token: null,
-  login: (token, user) => set({ isAuthenticated: true, token, user }),
+  login: (token, user) => set({ isAuthenticated: true, token: token, user: user }),
   logout: async () => {
     try {
       await apiClient.post("/client/logout", {}, { withCredentials: true });
@@ -35,6 +35,10 @@ const useAuthStore = create((set) => ({
       set({ isAuthenticated: false, user: null });
     }
   },
+  me: async () => {
+    let user = await apiClient.get('/client/me', {}, { withCredentials: true });
+    return user?.data;
+  }
 }));
 
 export default useAuthStore;
